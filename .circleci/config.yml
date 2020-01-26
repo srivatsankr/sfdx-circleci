@@ -57,7 +57,7 @@ jobs:
           name: Delete Useless Scratch Org
           command: |
             sfdx force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
-       - run:
+      - run:
           name: Deploy to Target Deployment Org
           command: |
            sfdx force:source:convert -r force-app -d testDeploy

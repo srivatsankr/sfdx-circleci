@@ -61,5 +61,4 @@ jobs:
           name: Deploy to Target Deployment Org
           command: |
            sfdx force:source:convert -r force-app -d testDeploy
-           - . cleanupDeploy.sh
            sfdx force:mdapi:deploy --wait 10 --deploydir testDeploy --targetusername hub

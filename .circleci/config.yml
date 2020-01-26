@@ -37,7 +37,7 @@ jobs:
             openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out assets/server.key -base64 -K $DECRYPTION_KEY -iv $DECRYPTION_IV
             #- openssl rsa -in keys/hub.key -check -noout
             echo 'make deploy key'
-            sfdx force:auth:jwt:grant --instanceurl $ENDPOINT  --clientid $HUB_CONSUMER_KEY --jwtkeyfile assets/server.key --username $HUB_SFDC_USER --setalias UAT
+            
       - run:
           name: Setup Org
           command: |
@@ -62,4 +62,4 @@ deployment:
   override:
     - sfdx force:source:convert -r force-app -d testDeploy
     - . cleanupDeploy.sh
-    - sfdx force:mdapi:deploy --wait 10 --deploydir testDeploy --targetusername UAT
+    - sfdx force:mdapi:deploy --wait 10 --deploydir testDeploy --targetusername hub
